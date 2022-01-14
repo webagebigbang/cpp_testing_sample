@@ -1,6 +1,6 @@
 stages:
 - build 
-- test
+#- test
 
 
 #include: include template
@@ -11,19 +11,20 @@ stages:
 build:
   stage: build
   script:
-    - cmake -B build
+    - cmake -B build -S .
+    - cmake --build build --target Producer
   artifacts:
     paths:
-      - Producer
+      - build/Producer
 
 
 # run tests using the binary built before
-RunGTest:
-  stage: test
-  script:
-    - ./GeneratorTest
+# RunGTest:
+#   stage: test
+#   script:
+#     - ./GeneratorTest
 
-RunCTest:
-   stage: test
-   script:
-     - (cd build; ctest --output-on-failure -j6)
+# RunCTest:
+#    stage: test
+#    script:
+#      - (cd build; ctest --output-on-failure -j6)
