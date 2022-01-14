@@ -1,6 +1,6 @@
 stages:
 - build 
-#- test
+- test
 
 
 #include: include template
@@ -19,10 +19,12 @@ build:
 
 
 # run tests using the binary built before
-# RunGTest:
-#   stage: test
-#   script:
-#     - ./GeneratorTest
+RunGTest:
+   stage: test
+   script:
+    - cmake -B build -S .
+    - cmake --build build --target GeneratorTest
+    - build/GeneratorTest
 
 # RunCTest:
 #    stage: test
