@@ -20,11 +20,15 @@ build:
 
 # run tests using the binary built before
 RunGTest:
-   stage: test
-   script:
+  stage: test
+  script:
     - cmake -B build -S .
     - cmake --build build --target GeneratorTest
-    - build/GeneratorTest
+    - build/Generator/GeneratorTest > gtestlog.txt
+
+  artifacts:
+    paths:
+      - gtestlog.txt
 
 # RunCTest:
 #    stage: test
