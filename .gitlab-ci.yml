@@ -1,0 +1,38 @@
+stages:
+- build 
+#- gtest
+#- cest
+
+
+#include: include template
+#- template:  C++.gitlab-ci.yml
+
+#image: gcc -- use docker image "gcc"
+
+build:
+  stage: build
+  script:
+    - cmake -B build
+  artifacts:
+    paths:
+      - Producer
+
+
+# run tests using the binary built before
+# test:
+#   stage: test
+#   script:
+#     - ./runmytests.sh
+
+
+# test-code-job1:
+#   stage: test
+#   script:
+#     - echo "This will suceed"
+#     - exit 0
+
+# test-code-job2:
+#   stage: test
+#   script:
+#     - echo "This could fail"
+
