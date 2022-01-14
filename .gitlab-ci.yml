@@ -1,7 +1,6 @@
 stages:
 - build 
-#- gtest
-#- cest
+- test
 
 
 #include: include template
@@ -19,14 +18,12 @@ build:
 
 
 # run tests using the binary built before
-# test:
-#   stage: test
-#   script:
-#     - ./runmytests.sh
+RunGTest:
+  stage: test
+  script:
+    - ./GeneratorTest
 
-
-# test-code-job1:
-#   stage: test
-#   script:
-#     - echo "This will suceed"
-#     - exit 0
+RunCTest:
+   stage: test
+   script:
+     - (cd build; ctest --output-on-failure -j6)
