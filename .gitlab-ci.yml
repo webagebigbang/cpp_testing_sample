@@ -30,7 +30,9 @@ RunGTest:
     paths:
       - gtestlog.txt
 
-# RunCTest:
-#    stage: test
-#    script:
-#      - (cd build; ctest --output-on-failure -j6)
+RunCTest:
+  stage: test
+  script:
+    - cd build
+    - ls
+    - ctest --output-on-failure -j6
