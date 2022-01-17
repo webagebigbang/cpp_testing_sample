@@ -2,12 +2,6 @@ stages:
 - build 
 - test
 
-
-#include: include template
-#- template:  C++.gitlab-ci.yml
-
-#image: gcc -- use docker image "gcc"
-
 build:
   stage: build
   script:
@@ -17,8 +11,6 @@ build:
     paths:
       - build/Producer
 
-
-# run tests using the binary built before
 RunGTest:
   stage: test
   script:
