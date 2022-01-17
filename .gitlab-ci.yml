@@ -16,15 +16,11 @@ RunGTest:
   script:
     - cmake -B build -S .
     - cmake --build build --target GeneratorTest
-    - build/Generator/GeneratorTest > gtestlog.txt
-
-  artifacts:
-    paths:
-      - gtestlog.txt
+    - build/Generator/GeneratorTest
 
 RunCTest:
   stage: test
   script:
+    - cmake -B build -S .
     - cd build
-    - ls
     - ctest --output-on-failure -j6
